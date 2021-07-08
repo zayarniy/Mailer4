@@ -10,6 +10,7 @@ namespace Mailer
       
         //Add something
     
+        //Add something2
         static int Counter { get; set; } = 0;
 
         public string Login { get; set; }
