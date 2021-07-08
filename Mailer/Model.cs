@@ -9,7 +9,7 @@ namespace Mailer
     {
       
         //Add something
-=======
+    
         static int Counter { get; set; } = 0;
 
         public string Login { get; set; }
