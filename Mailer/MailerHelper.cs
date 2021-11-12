@@ -11,22 +11,23 @@ namespace Mailer
     {
 
         static public event Action<DateTime, string> Action;
-        static public bool Sent(MailMessage message, string password)
+        static public bool Sent(MailMessage message, string login,string password)
         {
             try
             {
                 string subject = message.Subject;// tbSubject.Text;
                 //string password = password; //System.IO.File.ReadAllText("C:\\temp\\1.txt");
-                int port = 587;
+                int port = 25;
                 string body = message.Body;
                 var smtp = new SmtpClient()
                 {
-                    Host = "smtp.gmail.com",
+                    //Host = "smtp.gmail.com",
+                    Host = "smtp.yandex.ru",
                     Port = port,
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential("geekbrains2021@gmail.com", password)
+                    Credentials = new NetworkCredential(login,password)
                 };
                 Action?.Invoke(DateTime.Now, "Message is sending");
                 smtp.Send(message);

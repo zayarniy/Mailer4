@@ -46,8 +46,12 @@ namespace Mailer
 
         private void btnSent_Click(object sender, RoutedEventArgs e)
         {
-            MailMessage mailMessage = new MailMessage(tbLogin.Text, tbTo.Text,"Test subject", tbText.Text);
-            MailerHelper.Sent(mailMessage, pbPassword.Password);
+            MailMessage mailMessage = new MailMessage(tbFrom.Text, tbTo.Text,"Test subject", tbText.Text);
+            //MailerHelper.Sent(mailMessage, pbPassword.Password);
+            int count = Convert.ToInt32(cbMailCount.Text);
+            for(int i=0;i<count;i++)
+                MailerHelper.Sent(mailMessage, tbLogin.Text, System.IO.File.ReadAllText("C:\\temp\\1.txt"));
+            
         }
 
         private void miAbout_Click(object sender, RoutedEventArgs e)
